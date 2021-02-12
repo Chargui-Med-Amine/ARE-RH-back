@@ -19,15 +19,15 @@ router.post("/", (req, resp) => {
     return resp.status(422).json({ error: "missing fields" });
   }
 
-  const membres = new membres({
-    name,
-    groupe,
-    photo,
-    pole,
-    id,
+  const Membres = new membres({
+    name: name,
+    groupe: groupe,
+    photo: photo,
+    pole: pole,
+    id: id,
   });
-  membres
-    .save()
+
+  Membres.save()
     .then((data) => resp.json(data))
     .catch((e) => console.log(e));
 });

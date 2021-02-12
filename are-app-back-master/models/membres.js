@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const membre = mongoose.Schema({
+const membres = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -21,14 +21,14 @@ const membre = mongoose.Schema({
     type: String,
     required: true,
   },
-  abs_ag: {
+  pre_ag: {
     type: Number,
     default: 0,
   },
-  abs_p: {
+  pre_p: {
     type: Number,
     default: 0,
   },
 });
 
-module.exports = mongoose.model("membre", membre);
+module.exports = mongoose.model("membres", membres);

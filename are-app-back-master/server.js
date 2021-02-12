@@ -9,7 +9,7 @@ const reunion = require("./routes/reunion");
 
 // 0w4t3034RL730yZQ
 mongoose.connect(
-  "mongodb+srv://root:0w4t3034RL730yZQ@cluster0.i27xs.mongodb.net/root?retryWrites=true&w=majority",
+  "mongodb+srv://are:are123456@cluster0.r6pvo.mongodb.net/are?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

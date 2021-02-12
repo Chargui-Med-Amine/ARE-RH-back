@@ -2,7 +2,7 @@ const express = require("express");
 const presence = require("../models/presence");
 const router = express.Router();
 const reunion = require("../models/reunion");
-
+const membres = require("../models/membres");
 router.get("/", (req, resp) => {
   reunion
     .find()
@@ -23,15 +23,27 @@ router.post("/", (req, resp) => {
     .catch((e) => console.log(e));
 });
 
-router.post("/addMembre", (req, resp) => {
-  const { type, date } = req.body;
-  if (!type || !date) return resp.status(422).json({ error: "missing fields" });
-  const mat = new reunion({
-    type,
-    date,
-  });
-  mat
-    .save()
+router.post("/addMembreAg", (req, resp) => {
+  const { Membres, reunion } = req.body;
+  membres
+    .updateOne({ _id: Membres }, { $inc: { pre_ag: 1 } })
+    .exec()
+    .then((data) => resp.json(data))
+    .catch((e) => console.log(e));
+  const Presence = new presence({ membres: Membres, reunion: reunion });
+  Presence.save()
+    .then((data) => resp.json(data))
+    .catch((e) => console.log(e));
+});
+router.post("/addMembreP", (req, resp) => {
+  const { Membres, reunion } = req.body;
+  const Presence = new presence({ membres: Membres, reunion: reunion });
+  Presence.save()
+    .then((data) => resp.json(data))
+    .catch((e) => console.log(e));
+  membres
+    .updateOne({ _id: Membres }, { $inc: { pre_p: 1 } })
+    .exec()
     .then((data) => resp.json(data))
     .catch((e) => console.log(e));
 });

@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
 const presence = mongoose.Schema({
-  membre: {
+  membres: {
     type: ObjectId,
-    ref: "membre",
+    ref: "membres",
     required: true,
   },
   reunion: {
